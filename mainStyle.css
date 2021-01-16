@@ -94,11 +94,11 @@ a:hover{
 
 @media screen and (max-width: 500px){
     .title{
-        font-size: 4rem;
+        font-size: 5rem;
     }
 
     h2{
-        font-size: 30px;
+        font-size: 40px;
     }
 
     .subtitleContainer{
@@ -110,7 +110,7 @@ a:hover{
     }
 }
 
-@media screen and (max-width: 300px){
+@media screen and (max-width: 350px){
     main{
         align-items: flex-start;
     }
@@ -126,5 +126,12 @@ a:hover{
     
     .booksImage{
         width:60%;
+    }
+    .title{
+        font-size: 4rem;
+    }
+
+    h2{
+        font-size: 30px;
     }
 }
