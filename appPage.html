@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="appStyle.css">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+    <title>Library</title>
+</head>
+<body>
+    <div class="addBook">
+        <div class="formContainer">
+            <div class="containerInput">
+                <img src="Images/close.svg" class="closeAddButton" alt="">
+                <div class="formText">Title</div> <input type="text" id="title" class="inputForm">
+                <div class="formText">Author</div> <input type="text" id="author" class="inputForm">
+                <div class="formText">Pages</div> <input type="text" id="pages" class="inputForm">
+                <div class="formText">Pages Readed</div> <input type="text" id="readed" class="inputForm">
+                <button class="formButton">Add my book!</button>
+            </div>
+        </div>  
+    </div>
+    <main class="main">
+        <div class="imageContainer">
+            <img src="Images/LibroLogo.svg" alt="" class="logoImg">
+        </div>
+        <div class="sort">
+            <label for="sortList">Sort by :</label>
+            <select id="sortList" name="typesSort">
+                <option value="name">Name</option>
+                <option value="pages">Pages</option>
+                <option value="readed">Readed</option>
+            </select>
+            <select id="orderList" name="orderSort">
+                <option value="most">Ascendant</option>
+                <option value="least">Descendant</option>
+            </select>
+        </div>
+        <div class="books">
+            <div class="bookContainer">
+                <img src="/Images/Book.svg" alt="" class="bookDeco">
+                <div class="pagesContainer">
+                    <span class="titleOfBook">El señor de los anillos</span>
+                    <span class="totalPages">522 Paginas</span>
+                </div>
+                <div class="bar">|</div>
+                <div class="authorContainer">
+                    <span class="author">Richard James JR</span>
+                    <span class="readedPages">50 Leidas</span>
+                </div>
+                <div class="bookMenu">
+                    <img src="/Images/bxs-message-square-x.svg" alt="" class="bookMenu">
+                    <img src="/Images/add.svg" alt="" class="addPageButton">
+                    <img src="/Images/subtract.svg" alt="" class="subtractPageButton">
+                </div>
+            </div>
+            <div class="bookContainer">
+                <img src="/Images/Book.svg" alt="" class="bookDeco">
+                <div class="pagesContainer">
+                    <span class="titleOfBook">El señor de los anillos</span>
+                    <span class="totalPages">522 Paginas</span>
+                </div>
+                <div class="bar">|</div>
+                <div class="authorContainer">
+                    <span class="author">Richard James JR</span>
+                    <span class="readedPages">50 Leidas</span>
+                </div>
+                <div class="bookMenu">
+                    <img src="/Images/bxs-message-square-x.svg" alt="" class="bookMenu">
+                    <img src="/Images/add.svg" alt="" class="addPageButton">
+                    <img src="/Images/subtract.svg" alt="" class="subtractPageButton">
+                </div>
+            </div>
+            <div class="bookContainer">
+                <img src="/Images/Book.svg" alt="" class="bookDeco">
+                <div class="pagesContainer">
+                    <span class="titleOfBook">El señor de los anillos</span>
+                    <span class="totalPages">522 Paginas</span>
+                </div>
+                <div class="bar">|</div>
+                <div class="authorContainer">
+                    <span class="author">Richard James JR</span>
+                    <span class="readedPages">50 Leidas</span>
+                </div>
+                <div class="bookMenu">
+                    <img src="/Images/bxs-message-square-x.svg" alt="" class="bookMenu">
+                    <img src="/Images/add.svg" alt="" class="addPageButton">
+                    <img src="/Images/subtract.svg" alt="" class="subtractPageButton">
+                </div>
+            </div>
+            <div class="bookContainer">
+                <img src="/Images/Book.svg" alt="" class="bookDeco">
+                <div class="pagesContainer">
+                    <span class="titleOfBook">El señor de los anillos</span>
+                    <span class="totalPages">522 Paginas</span>
+                </div>
+                <div class="bar">|</div>
+                <div class="authorContainer">
+                    <span class="author">Richard James JR</span>
+                    <span class="readedPages">50 Leidas</span>
+                </div>
+                <div class="bookMenu">
+                    <img src="/Images/bxs-message-square-x.svg" alt="" class="bookMenu">
+                    <img src="/Images/add.svg" alt="" class="addPageButton">
+                    <img src="/Images/subtract.svg" alt="" class="subtractPageButton">
+                </div>
+            </div>
+            <div class="bookContainer">
+                <img src="/Images/Book.svg" alt="" class="bookDeco">
+                <div class="pagesContainer">
+                    <span class="titleOfBook">El señor de los anillos</span>
+                    <span class="totalPages">522 Paginas</span>
+                </div>
+                <div class="bar">|</div>
+                <div class="authorContainer">
+                    <span class="author">Richard James JR</span>
+                    <span class="readedPages">50 Leidas</span>
+                </div>
+                <div class="bookMenu">
+                    <img src="/Images/bxs-message-square-x.svg" alt="" class="bookMenu">
+                    <img src="/Images/add.svg" alt="" class="addPageButton">
+                    <img src="/Images/subtract.svg" alt="" class="subtractPageButton">
+                </div>
+            </div>
+            </div>
+        </div>
+    
+        <div class="tracking">
+            <div class="titleText">
+                Book tracking
+            </div>
+            <div class="tracker">
+                <img src="Images/varita.svg"  class="divisor" alt="">
+                <div class="stat">Pages readed</div>
+                    <div class="number">1598</div>
+                <div class="stat">Books listed</div>
+                    <div class="number">1598</div>
+                <div class="stat">Readed</div>
+                    <div class="number">1598</div>
+                <div class="stat">Remaining</div>
+                    <div class="number">1598</div>
+            </div>
+            <div class="addDiv">
+                <span class="addText">Add new</span>
+                <img src="Images/AddBook.svg" class="addImg" alt="">
+            </div>
+        </div>
+        <div class="containerTrackingMobile">
+            <div class="trackingMobile">
+                <img src="/Images/close.svg" class="closeMenu" alt="">
+                <div class="titleText">
+                    Book tracking
+                </div>
+                <div class="tracker">
+                    <img src="Images/varita.svg"  class="divisor" alt="">
+                    <div class="stat">Pages readed</div>
+                        <div class="number">1598</div>
+                    <div class="stat">Books listed</div>
+                        <div class="number">1598</div>
+                    <div class="stat">Readed</div>
+                        <div class="number">1598</div>
+                    <div class="stat">Remaining</div>
+                        <div class="number">1598</div>
+                </div>
+            </div>
+        </div>
+        <div class="mobileMenus">
+            <img src="Images/AddBook.svg" class="addImg" alt="">
+            <img src="Images/Menu.svg" alt="" class="showMenu">
+        </div>
+    </main>
+
+    <script src="addBookButton.js"></script>
+    <script src="showMenu.js"></script>
+</body>
+</html>

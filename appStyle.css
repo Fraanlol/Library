@@ -1,0 +1,357 @@
+html{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-size: 10px;
+}
+body{   
+    font-family: Raleway, sans-serif;
+    min-height: 100vh;
+    overflow:hidden
+}
+
+.imageContainer{grid-area: logo;}
+.sort{grid-area: sort;}
+.books{grid-area: books;}
+.tracking{grid-area: track;}
+
+.main{
+    max-height: 100vh;
+    margin:0 2vw;
+    display:grid;
+    grid-template-areas: 
+    'logo logo'
+    'sort  track'
+    'books track';
+    grid-template-rows: 1fr 1fr 4fr;
+    grid-template-columns: 2fr 1fr;
+}
+
+.logoImg{
+    width:90px;
+}
+
+.sort{
+   display:flex;
+   flex-direction:row;
+   justify-content: space-around;
+   background-color: #f2f2f2;
+   height: fit-content;
+   padding:10px;
+   border-radius: 27px;
+   font-size: 15px;
+   align-items: center;
+   align-self: center;
+}
+
+label{
+    background-color: #E63946;
+    padding:5px;
+    border-radius:5px;
+}
+select{
+    height:fit-content;
+    outline:none;
+    border:none;
+    padding:5px;
+    border-radius: 10px;
+    background-color: #E63946;
+    color:white;
+    text-align: center;
+}
+
+.tracking{
+ box-sizing: border-box; 
+ display:flex;
+ flex-direction:column;
+ align-items: center;
+ justify-content: space-between;
+}
+
+.titleText{
+  font-size:4rem;
+  text-align: center;
+  font-weight: 100;
+}
+
+.tracker{
+    background:#1D3557;
+    height:350px;
+    width: 250px;
+    border-radius: 3%;
+    display:flex;
+    flex-direction: column;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+.stat, .number{
+    font-size: 2.5rem;
+    margin:3px auto;
+    text-align: center;
+}
+.stat{
+    color:white;
+}
+
+.divisor{
+    position:absolute;
+    height:320px;
+    margin-left: 20px;
+}
+
+.addDiv{
+    display:flex;
+    align-items: center;
+}
+.addText{
+    font-size: 4rem;
+}
+.addImg{
+    transform: scale(.7);
+}
+.addImg:hover{
+    transform: scale(.8);
+    animation: testing .3s linear;
+}
+
+@keyframes testing{
+    from{transform: scale(.8)}
+    to{ transform:scale(.8) rotate(90deg); }
+}
+
+.books{
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.books::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+ 
+.books::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+.books::-webkit-scrollbar-thumb {
+    background: #E63946;
+    border-radius: 10px;
+  }
+  
+.books::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+.bookContainer{
+    background-color:#f2f2f2;
+    display:flex;
+    border-radius:15px;
+    width:80%;
+    margin: 10px auto;
+}
+
+.pagesContainer, .authorContainer{
+    display:flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    margin-left: 2rem;
+}
+
+.authorContainer{
+    margin:0;
+}
+.pagesContainer > span, .authorContainer > span{
+    font-size: 20px;
+}
+
+.titleOfBook{
+    font-weight: bold;
+}
+
+.totalPages{
+    font-weight: 200;
+    align-self: flex-end;
+}
+
+.readedPages{
+    font-weight: 200;
+    align-self: flex-start;
+}
+
+.bar{
+    height:100%;
+    font-size: 10rem;
+    font-weight: 200;
+}
+
+.bookMenu{
+    align-self: center;
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+}
+
+.bookDeco{
+    transform: scale(.5);
+    align-self: center;
+}
+
+.addBook{
+    position:absolute;
+    background: rgba(0,0,0,.5);
+    height:100%;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    display:none;
+}
+
+.addBookShow{
+    display:flex;
+}
+.formContainer{
+   width:80%;
+   height:90%;
+   background-color: white;
+   z-index: 100;
+   border-radius: 30px;
+   text-align: center;
+   position:fixed;
+}
+
+.containerInput{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    height:100%;
+}
+
+.formText{
+    width: 40%;
+    font-size: 3rem;
+    font-weight: 200;
+    text-align: center;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+.addPageButton, .subtractPageButton{
+    transform: scale(.5);
+}
+.inputForm{
+    width: 40%;
+    margin-bottom: 10px;
+    padding: 10px;
+    align-self: center;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px 1px;
+    outline:none;
+}
+
+.closeMenu{
+    position:fixed;
+    top:10px;
+    right:10px;
+}
+
+.formButton{
+    font-size: 2rem;
+    margin-top: 20px;
+    padding:10px;
+    border-radius: 10px;
+    border:none;
+    background-color:red;
+    color:white;
+    outline:none;
+    width:50%;
+    margin:5% auto
+}
+
+.closeAddButton{
+position:absolute;
+right:10px;
+top:10px;
+}
+
+.formButton:hover{
+    background-color:green;
+    color:black;
+    transform: scale(1.1);
+}
+
+.containerTrackingMobile, .mobileMenus{
+    display:none;
+}
+
+@media screen and (max-width: 900px){
+    .tracking{
+        display:none;
+    }
+
+    .containerTrackingMobileShow{
+        position:fixed;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height:100%;
+        width:100%;
+        background-color: rgba(0,0,0,.5);
+    }
+
+    .titleText{
+        color:white;
+    }
+
+    .main{
+        grid-template-columns: auto 0;
+    }
+
+    .mobileMenus{
+        position:fixed;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        top:0;
+        right:30px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .bookContainer{
+        width:90%;
+    }
+
+    .pagesContainer {
+        margin:0;
+    }
+
+    .bookDeco{
+        width:70px;
+        height:70px;
+    }
+}
+
+@media screen and (max-width: 300px){
+    .bookContainer{
+        width:100%;
+    }
+
+    .pagesContainer > span, .authorContainer > span {
+        font-size: 15px;
+    }
+
+    label{
+        display:none;
+    }
+
+    .mobileMenus > img {
+        transform: scale(.5);
+    }
+
+    .mobileMenus> img:last-of-type{
+        transform: scale(.8)
+    }
+ 
+}
