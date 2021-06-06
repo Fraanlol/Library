@@ -58,7 +58,11 @@ function createNewBook(book){
     let authorContainers = document.createElement('div');
     let authorContainer = document.createElement('span');
     let readedPagesContainer = document.createElement('span');
-    let menuButtons = bookOptions.cloneNode(true);
+    let menuButtons = document.createElement('div');
+    let eraseImg = document.createElement('img');
+    let subtractPageImg = document.createElement('img');
+    let addPageImg = document.createElement('img');
+
 
     mainDiv.classList.add('bookContainer');
     bookImg.classList.add('bookDeco');
@@ -70,6 +74,14 @@ function createNewBook(book){
     readedPagesContainer.classList.add('readedPages');
     pagesContainer.classList.add('pagesContainer');
     authorContainers.classList.add('authorContainer');
+    eraseImg.classList.add('eraseBook');
+    addPageImg.classList.add('addPageButton');
+    subtractPageImg.classList.add('subtractPageButton');
+    menuButtons.classList.add('bookMenu');
+
+    eraseImg.src='Images/bxs-message-square-x.svg';
+    addPageImg.src='Images/add.svg';
+    subtractPageImg.src='Images/subtract.svg'
 
     titleContainer.innerText = book.bookName;    
     totalPagesContainer.innerText = `${book.pages} Pages`;
@@ -86,40 +98,37 @@ function createNewBook(book){
         authorContainers.appendChild(readedPagesContainer);
     mainDiv.appendChild(authorContainers);
     mainDiv.appendChild(menuButtons);
+    menuButtons.appendChild(eraseImg);
+    menuButtons.appendChild(addPageImg);
+    menuButtons.appendChild(subtractPageImg);
     booksContainer.appendChild(mainDiv);
-    buttons();
+    buttons(eraseImg, addPageImg, subtractPageImg);
 }
 
+function buttons(eraser,add,subtractor){
+    let closeButtons = eraser;
+    let addPageButton = add;
+    let minusPageButton = subtractor;
 
-function buttons(){
-    let closeButtons = document.querySelectorAll('.eraseBook');
-    let addPageButton = document.querySelectorAll('.addPageButton');
-    let minusPageButton = document.querySelectorAll('.subtractPageButton');
-
-    closeButtons.forEach(key => {
-    key.addEventListener('click', (e) => {
+    closeButtons.addEventListener('click', (e) => {
         booksContainer.removeChild(e.target.parentElement.parentElement);
         removeFromLibrary((e.target.parentElement.parentElement.firstChild.nextSibling.firstChild).innerText)
     })
-})
 
-addPageButton.forEach(key =>{
-    key.addEventListener('click', (e) => {
+
+    addPageButton.addEventListener('click', (e) => {
         let a = e.target.parentNode.previousElementSibling.lastElementChild;
         let b = parseInt(a.innerText);
          b++
         a.innerText = `${b} Readed`
     })
-})
 
-minusPageButton.forEach(key =>{
-    key.addEventListener('click', (e) => {
+    minusPageButton.addEventListener('click', (e) => {
         let a = e.target.parentNode.previousElementSibling.lastElementChild;
         let b = parseInt(a.innerText);
          b--
         a.innerText = `${b} Readed`
     })
-})
 }
 
 
