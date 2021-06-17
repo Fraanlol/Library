@@ -3,16 +3,26 @@ let bookOptions = document.querySelector('.bookMenu');
 
 let arrayOfBooks = [];
 
-class Book {
+class Book{
     constructor(bookName, authorName, pages, pagesReaded){
         this.bookName = bookName;
         this.authorName = authorName;
         this.pages = pages;
         this.pagesReaded = pagesReaded;
         this.img = 'Images/Book.svg';
+        this.eraseButton = 'Images/bxs-message-square-x.svg';
+        this.addImg = 'Images/add.svg';
+        this.subtractButton = 'Images/subtract.svg';
+        this.readed = pages == pagesReaded ? true:false;
+    }
+    readStatus(){
+        if(this.pages == this.pagesReaded){
+            this.readed = true;
+        } else{
+            this.readed = false;
+        }
     }
 }
-
 function checkIfExists(book){
     if(arrayOfBooks.some(key => key.bookName === book.bookName)){
         alert('That book already exists')
@@ -70,7 +80,6 @@ function createNewBook(book){
     totalPagesContainer.classList.add('totalPages');
     authorContainer.classList.add('author');
     separator.classList.add('bar');
-    bookImg.setAttribute('src', book.img);
     readedPagesContainer.classList.add('readedPages');
     pagesContainer.classList.add('pagesContainer');
     authorContainers.classList.add('authorContainer');
@@ -79,9 +88,10 @@ function createNewBook(book){
     subtractPageImg.classList.add('subtractPageButton');
     menuButtons.classList.add('bookMenu');
 
-    eraseImg.src='Images/bxs-message-square-x.svg';
-    addPageImg.src='Images/add.svg';
-    subtractPageImg.src='Images/subtract.svg'
+    bookImg.setAttribute('src', book.img);
+    eraseImg.setAttribute('src', book.eraseButton);
+    addPageImg.setAttribute('src', book.addImg);
+    subtractPageImg.setAttribute('src', book.subtractButton);
 
     titleContainer.innerText = book.bookName;    
     totalPagesContainer.innerText = `${book.pages} Pages`;
@@ -102,35 +112,39 @@ function createNewBook(book){
     menuButtons.appendChild(addPageImg);
     menuButtons.appendChild(subtractPageImg);
     booksContainer.appendChild(mainDiv);
-    buttons(eraseImg, addPageImg, subtractPageImg);
+
+    eraseImg.addEventListener('click',(e)=>{eraseBook(book,e)});
+    addPageImg.addEventListener('click', (e) =>{addPageReaded(book,e)});
+    subtractPageImg.addEventListener('click', (e) => {subtractPageReaded(book,e)})
+    stats();
 }
 
-function buttons(eraser,add,subtractor){
-    let closeButtons = eraser;
-    let addPageButton = add;
-    let minusPageButton = subtractor;
-
-    closeButtons.addEventListener('click', (e) => {
-        booksContainer.removeChild(e.target.parentElement.parentElement);
-        removeFromLibrary((e.target.parentElement.parentElement.firstChild.nextSibling.firstChild).innerText)
-    })
-
-
-    addPageButton.addEventListener('click', (e) => {
-        let a = e.target.parentNode.previousElementSibling.lastElementChild;
-        let b = parseInt(a.innerText);
-         b++
-        a.innerText = `${b} Readed`
-    })
-
-    minusPageButton.addEventListener('click', (e) => {
-        let a = e.target.parentNode.previousElementSibling.lastElementChild;
-        let b = parseInt(a.innerText);
-         b--
-        a.innerText = `${b} Readed`
-    })
+function eraseBook(book,e){
+    booksContainer.removeChild(e.target.parentElement.parentElement);
+    removeFromLibrary(book.bookName);
+    stats();
 }
 
+function addPageReaded(book,e){
+    let maxPages = book.pages;
+    let readedPages = e.target.parentNode.previousElementSibling.lastElementChild;
+    let numberR = parseInt(readedPages.innerText);
+    numberR < maxPages ? numberR++:null
+    book.pagesReaded = numberR;
+    readedPages.innerText = `${numberR} Readed`;
+    arrayOfBooks.map((key)=>key.readStatus());
+    stats();
+}
+
+function subtractPageReaded(book,e){
+    let readedPages = e.target.parentNode.previousElementSibling.lastElementChild;
+    let numberR = parseInt(readedPages.innerText);
+    numberR > 0 ? numberR--:null
+    book.pagesReaded=numberR;
+    readedPages.innerText = `${numberR} Readed`;
+    arrayOfBooks.map((key)=>key.readStatus());
+    stats();
+}
 
 let createBookButton = document.querySelector('.formButton');
 createBookButton.addEventListener('click', (e) => {
@@ -142,9 +156,14 @@ createBookButton.addEventListener('click', (e) => {
             }
         })
     } else{
-       
     getData();
     document.querySelector('.containerInput').reset();
     }
 });
 
+function stats(){
+    document.querySelectorAll('#lBooks').forEach( key => {key.innerText = arrayOfBooks.length;})
+    document.querySelectorAll('#rPages').forEach( key => {key.innerText = arrayOfBooks.map((key)=>key.pagesReaded).reduce((a,b)=>a+b,0);})
+    document.querySelectorAll('#rBooks').forEach( key => { key.innerText = arrayOfBooks.filter((key)=>key.readed==true).length;})
+    document.querySelectorAll('#nrBooks').forEach(key => { key.innerText = arrayOfBooks.filter((key)=>key.readed==false).length;})
+}
