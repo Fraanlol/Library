@@ -29,7 +29,8 @@ function checkIfExists(book){
         return false;
     } else{
     arrayOfBooks.push(book);
-    createNewBook(book)
+    saveStorage();
+    createNewBook(book);
     return true;
     }
 }
@@ -123,6 +124,8 @@ function eraseBook(book,e){
     booksContainer.removeChild(e.target.parentElement.parentElement);
     removeFromLibrary(book.bookName);
     stats();
+    localStorage.clear();
+    saveStorage();
 }
 
 function addPageReaded(book,e){
@@ -134,6 +137,8 @@ function addPageReaded(book,e){
     readedPages.innerText = `${numberR} Readed`;
     arrayOfBooks.map((key)=>key.readStatus());
     stats();
+    localStorage.clear();
+    saveStorage();
 }
 
 function subtractPageReaded(book,e){
@@ -144,6 +149,8 @@ function subtractPageReaded(book,e){
     readedPages.innerText = `${numberR} Readed`;
     arrayOfBooks.map((key)=>key.readStatus());
     stats();
+    localStorage.clear();
+    saveStorage();
 }
 
 let createBookButton = document.querySelector('.formButton');
@@ -166,4 +173,16 @@ function stats(){
     document.querySelectorAll('#rPages').forEach( key => {key.innerText = arrayOfBooks.map((key)=>key.pagesReaded).reduce((a,b)=>a+b,0);})
     document.querySelectorAll('#rBooks').forEach( key => { key.innerText = arrayOfBooks.filter((key)=>key.readed==true).length;})
     document.querySelectorAll('#nrBooks').forEach(key => { key.innerText = arrayOfBooks.filter((key)=>key.readed==false).length;})
+}
+let a;
+function saveStorage(){
+    localStorage.setItem('library', JSON.stringify(arrayOfBooks));
+}
+a = JSON.parse(localStorage.getItem('library'));
+if(!localStorage.getItem('library')){
+    console.log('no existe')
+} else{
+    a.forEach(key => {
+        checkIfExists(new Book(key.bookName,key.authorName,key.pages,key.pagesReaded))
+    })
 }
